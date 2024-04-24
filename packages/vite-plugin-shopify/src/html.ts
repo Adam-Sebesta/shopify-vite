@@ -31,7 +31,7 @@ export default function shopifyHTML (options: Required<Options>): Plugin {
     },
     configureServer ({ config, middlewares, httpServer }) {
       httpServer?.once('listening', () => {
-        const address = httpServer?.address()
+        const address = config.server.origin || httpServer?.address()
 
         const isAddressInfo = (x: string | AddressInfo | null | undefined): x is AddressInfo => typeof x === 'object'
 
